@@ -1,0 +1,12 @@
+# Build Artifacts
+build/
+dist/
+
+# Python Environment
+venv/
+
+# IDE Artifacts
+.idea/
+
+# Platform Artifacts
+.DS_Store
