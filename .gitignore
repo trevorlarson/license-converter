@@ -4,6 +4,7 @@ dist/
 
 # Python Environment
 venv/
+__pycache__
 
 # IDE Artifacts
 .idea/

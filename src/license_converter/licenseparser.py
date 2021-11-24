@@ -33,14 +33,10 @@ class LicenseParser:
             self.use_server = True
             i += 1
 
-        while i < len(lines):
-            comment = None
-            if lines[i][0] == '#':
-                comment = lines[i]
-                i += 1
-            ft = Feature(comment, lines[i])
-            self.features.append(ft)
-            i += 1
+        for line in lines:
+            if line[0] != '#':
+                ft = Feature(line)
+                self.features.append(ft)
 
     def __exit__(self, exc_type, exc_val, exc_tb):
         self.close()
@@ -104,8 +100,6 @@ class Vendor:
 
 
 class Feature:
-    comment = None
-    expires = None
     feature = None
     vendor = None
     version = None
@@ -113,10 +107,7 @@ class Feature:
     license_count = None
     opt_fields = {}
 
-    def __init__(self, comment, feat):
-        if comment:
-            self.comment = comment.lstrip("#").strip()
-
+    def __init__(self, feat):
         isplit = shlex.split(feat)
         self.feature = isplit[1]
         self.vendor = isplit[2]
@@ -132,4 +123,4 @@ class Feature:
         self.sign = isplit[-1].lstrip("SIGN=").lstrip("AUTH=")
 
     def __str__(self):
-        return f"Product: {self.comment}, Expires: {self.expires}"
+        return f"Feature: {self.feature}"

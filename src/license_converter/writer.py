@@ -1,7 +1,7 @@
 import csv
 from license_converter.licenseparser import LicenseParser
 
-columns = ["FILE", "HOST_ID", "PRODUCT", "DESCRIPTION", "VERSION", "QUANTITY", "ISSUE_DATE", "EXPIRATION_DATE"]
+columns = ["FILE", "HOST_ID", "PRODUCT", "VERSION", "QUANTITY", "ISSUE_DATE", "EXPIRATION_DATE"]
 
 
 class LicenseWriter:
@@ -23,7 +23,7 @@ class LicenseWriter:
 
     def write_file(self, lf: LicenseParser):
         for product in lf.features:
-            fields = [lf.path, lf.server.host_id, product.feature, product.comment, product.version,
+            fields = [lf.path, lf.server.host_id, product.feature, product.version,
                       product.license_count, product.opt_fields.get("ISSUED", ""), product.exp_date]
             self.csv_writer.writerow(fields)
 
