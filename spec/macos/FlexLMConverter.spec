@@ -4,7 +4,7 @@
 block_cipher = None
 
 
-a = Analysis(['src/license_converter/main.py'],
+a = Analysis(['../../src/license_converter/main.py'],
              pathex=[],
              binaries=[],
              datas=[],
@@ -26,7 +26,7 @@ exe = EXE(pyz,
           a.zipfiles,
           a.datas,  
           [],
-          name='main',
+          name='FlexLMConverter',
           debug=False,
           bootloader_ignore_signals=False,
           strip=False,
@@ -39,6 +39,6 @@ exe = EXE(pyz,
           codesign_identity=None,
           entitlements_file=None )
 app = BUNDLE(exe,
-             name='main.app',
+             name='FlexLMConverter.app',
              icon=None,
              bundle_identifier=None)
