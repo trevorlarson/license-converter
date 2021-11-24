@@ -1,6 +1,8 @@
 name: Create release package
 
 on:
+  release:
+    types: [published, created, edited]
   push:
     branches: [ master ]
   pull_request:
